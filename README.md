@@ -1,6 +1,6 @@
 # Asmnet
 
-A small x86-64 assembly math library written in NASM, with a C test harness, plus a from-scratch micro neural network in Python.
+A math library written in x86 NASM, with C based harness
 
 ## What's in here
 
