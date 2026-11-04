@@ -17,8 +17,9 @@ ASM_OBJS  = $(patsubst $(SRC_DIR)/%.asm,$(BUILD_DIR)/%.o,$(ASM_SRCS))
 TEST_SRC  = $(TEST_DIR)/test_math.c
 TEST_OBJ  = $(BUILD_DIR)/test_math.o
 TEST_BIN  = $(BUILD_DIR)/test_math
+LIB       = $(BUILD_DIR)/libasmnet.so
 
-.PHONY: all clean test run
+.PHONY: all clean test run lib
 
 all: $(TEST_BIN)
 
@@ -38,6 +39,11 @@ test: $(TEST_BIN)
 	@./$(TEST_BIN)
 
 run: test
+
+lib: $(LIB)
+
+$(LIB): $(ASM_OBJS) | $(BUILD_DIR)
+	$(CC) -shared -nostartfiles -z noexecstack -o $@ $(ASM_OBJS)
 
 clean:
 	rm -rf $(BUILD_DIR)
