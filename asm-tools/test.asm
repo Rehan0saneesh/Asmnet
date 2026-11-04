@@ -11,8 +11,8 @@ section .text
         global _start
 
 _start:
-        mov rdi, [offset_idx]
-        mov rsi, [pull_len]
+        mov r12, [offset_idx]
+        mov r13, [pull_len]
 
         call pullfunc
         mov [test_out], rax
